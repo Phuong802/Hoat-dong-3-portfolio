@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio cá nhân của [Tên bạn] - Lập trình viên Web định hướng Frontend/Fullstack.">
+  <meta name="author" content="[Tên của bạn]">
+  <title>[Tên của bạn] - Web Developer Portfolio</title>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#hero" class="brand-logo" aria-label="Về đầu trang cá nhân">
+        <strong>DevPortfolio</strong>
+      </a>
+
+    
+      <nav class="main-nav" aria-label="Menu điều hướng chính">
+        <ul class="nav-list">
+          <li><a href="#hero">Trang chủ</a></li>
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#skills">Kỹ năng</a></li>
+          <li><a href="#projects">Dự án</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <section id="hero" class="hero-section">
+      <h1>Xin chào, tôi là <span class="highlight">[Tên của bạn]</span></h1>
+      <p class="subtitle">Sinh viên Công nghệ Thông tin &amp; Lập trình viên Web</p>
+      <p class="hero-cta">
+        <a href="#projects" class="btn btn-primary">Xem dự án của tôi</a>
+        <a href="#contact" class="btn btn-secondary">Liên hệ ngay</a>
+      </p>
+    </section>
+
+    <section id="about" class="about-section">
+      <h2>Giới thiệu bản thân</h2>
+      <figure class="profile-figure">
+        <img 
+          src="avatar.jpg" 
+          alt="Ảnh chân dung của [Tên bạn] đang làm việc bên máy tính" 
+          width="200" 
+          height="200"
+          loading="lazy"
+        >
+        <figcaption>Lập trình viên nhiệt huyết với giao diện người dùng</figcaption>
+      </figure>
+      <div class="bio-content">
+        <p>
+          Tôi hiện là sinh viên chuyên ngành Công nghệ Thông tin. Đam mê của tôi là 
+          xây dựng những giao diện web sạch sẽ, chuẩn ngữ nghĩa và thân thiện với người dùng.
+        </p>
+        <p>
+          Mục tiêu: Trở thành một Frontend Developer chuyên nghiệp, am hiểu sâu về UX và tối ưu hiệu năng.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+      <h2>Kỹ năng học được</h2>
+      <p>Các công nghệ và công cụ tôi đã tiếp cận và thực hành:</p>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Frontend Căn bản</h3>
+          <ul>
+            <li>HTML5 (Semantic &amp; Accessibility)</li>
+            <li>CSS3 (Flexbox, Grid, Responsive Design)</li>
+            <li>JavaScript (ES6+, DOM Manipulation)</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Công cụ &amp; Môi trường</h3>
+          <ul>
+            <li>Git &amp; GitHub (Quản lý phiên bản)</li>
+            <li>VS Code &amp; Chrome DevTools</li>
+            <li>Figma (Đọc và bóc tách thiết kế UI)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+      <h2>Dự án nổi bật</h2>
+      <div class="projects-container">
+        
+        <article class="project-card">
+          <h3>Ứng dụng Quản lý Công việc (Todo App)</h3>
+          <p class="project-tech"><strong>Công nghệ:</strong> HTML5, CSS3, JavaScript ES6</p>
+          <p>Ứng dụng ghi chú công việc cá nhân, hỗ trợ lưu trữ cục bộ qua LocalStorage và giao diện responsive.</p>
+          <a 
+            href="https://github.com/username/todo-app" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Xem mã nguồn dự án Todo App trên GitHub (Mở trong tab mới)"
+          >
+            Xem mã nguồn trên GitHub &rarr;
+          </a>
+        </article>
+
+        <article class="project-card">
+          <h3>Website Giới thiệu Quán Cà Phê</h3>
+          <p class="project-tech"><strong>Công nghệ:</strong> HTML5 Semantic, CSS Grid</p>
+          <p>Trang web giới thiệu thực đơn và đặt bàn trực tuyến, tối ưu cấu trúc thẻ chuẩn SEO On-page.</p>
+          <a 
+            href="https://github.com/username/coffee-shop" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Xem mã nguồn dự án Coffee Shop trên GitHub (Mở trong tab mới)"
+          >
+            Xem mã nguồn trên GitHub &rarr;
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2>Liên hệ với tôi</h2>
+      <p>Hãy gửi lời nhắn nếu bạn quan tâm đến hồ sơ của tôi hoặc có cơ hội thực tập phù hợp.</p>
+      
+      <form action="#" method="POST" class="contact-form">
+        <div class="form-group">
+          <label for="user-name">Họ và tên:</label>
+          <input type="text" id="user-name" name="name" required placeholder="Ví dụ: Nguyễn Văn A">
+        </div>
+
+        <div class="form-group">
+          <label for="user-email">Email:</label>
+          <input type="email" id="user-email" name="email" required placeholder="name@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="user-message">Lời nhắn:</label>
+          <textarea id="user-message" name="message" rows="4" required placeholder="Nội dung bạn muốn trao đổi..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-submit">Gửi tin nhắn</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      
+      <address class="author-contact">
+        Email: <a href="mailto:emailcuaban@example.com">emailcuaban@example.com</a> |
+        Địa điểm: Hà Nội, Việt Nam
+      </address>
+
+      <nav class="social-nav" aria-label="Liên kết mạng xã hội cá nhân">
+        <ul class="social-list">
+          <li>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Trang GitHub cá nhân">
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Trang LinkedIn cá nhân">
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Trang Facebook cá nhân">
+              Facebook
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <p class="copyright">
+        <small>&copy; 2026 [Tên của bạn]. Tất cả quyền được bảo lưu.</small>
+      </p>
+
+    </div>
+  </footer>
+
+</body>
+</html>
