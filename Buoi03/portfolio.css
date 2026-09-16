@@ -1,0 +1,158 @@
+/* ==========================================================
+   1. GLOBAL STYLES (Màu nền Brat & Phông chữ)
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+  --bg-color: #C1E10B;       /* Màu xanh chanh brat */
+  --text-color: #000000;     /* Chữ đen thô */
+  --font-mono: 'Courier Prime', 'Courier New', monospace;
+  --font-sans: Arial, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* ==========================================================
+   2. KHỞI TẠO BỐ CỤC CSS GRID (Layout theo yêu cầu)
+   ========================================================== */
+.cosmic-container {
+  display: grid;
+  
+  /* Tạo 1 cột chính căn giữa màn hình */
+  grid-template-columns: 1fr; 
+  gap: 25px; /* Khoảng cách giữa các phần tử Grid */
+  
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* ==========================================================
+   3. ĐỊNH DẠNG CÁC PHẦN TỬ TRONG GRID (Grid Items)
+   ========================================================== */
+
+/* Header */
+header, .header-card {
+  text-align: center;
+  padding-bottom: 25px;
+  border-bottom: 2px solid var(--text-color);
+}
+
+header h1 {
+  font-family: var(--font-mono);
+  font-size: 2.4rem;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+}
+
+nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin: 0 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Section Giới Thiệu */
+.about-section h2 {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.avatar-box {
+  width: 180px;
+  height: 180px;
+  margin: 10px auto 20px auto;
+  border: 2px solid var(--text-color);
+}
+
+.user-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-section p {
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+/* Khối Thẻ Dự Án */
+.project-card {
+  border: 1px solid var(--text-color);
+  padding: 20px;
+  background-color: transparent;
+}
+
+.project-card h2 {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.project-card h3 {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.project-card a {
+  color: var(--text-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+.footer-card {
+    position: relative;
+  padding: 40px 20px;
+  text-align: center;
+  color: #ffffff; /* Chữ trắng để nổi bật trên nền tối */
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  font-family: 'Courier Prime', monospace;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 
+              0 0 15px rgba(0, 0, 0, 0.9);
+
+}
