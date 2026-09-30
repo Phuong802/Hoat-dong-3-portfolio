@@ -1,0 +1,366 @@
+
+:root {
+    --primary: #2563eb;       /* Màu chủ đạo 1 */
+    --secondary: #f59e0b;     /* Màu chủ đạo 2 (hoặc điểm nhấn) */
+    
+    --text-main: #1f2937;     /* Xám đậm (cho tiêu đề, text chính) */
+    --text-muted: #4b5563;    /* Xám trung bình (cho phụ đề, mô tả) */
+    --text-light: #9ca3af;    /* Xám nhạt (cho placeholder, chữ mờ) */
+    
+    --bg-color: #f8fafc;      /* Màu nền trang web */
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: #f4f6f8;
+    color: #222;
+  }
+  
+  /* ================= HEADER ================= */
+  
+  .site-header {
+    background: #1e293b;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .header-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 15px 20px;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .brand-logo {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+  }
+  
+  .nav-list {
+    list-style: none;
+  
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+  
+  .nav-list a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav-list a:hover {
+    color: #38bdf8;
+  }
+  
+  /* ================= MAIN ================= */
+  
+  .site-main {
+    max-width: 1100px;
+    margin: auto;
+  
+    display: grid;
+    gap: 25px;
+  
+    padding: 25px 20px;
+  }
+  
+  .site-main section {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+  }
+  
+  /* ================= HERO ================= */
+  
+  .hero-section {
+    text-align: center;
+    padding: 70px 30px !important;
+  }
+  
+  .hero-section h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+  
+  .highlight {
+    color: #0284c7;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  
+  .btn-primary {
+    background: #0284c7;
+    color: white;
+  }
+  
+  .btn-secondary {
+    border: 2px solid #0284c7;
+    color: #0284c7;
+  }
+  
+  /* ================= ABOUT ================= */
+  
+  .about-section {
+    display: grid;
+  
+    grid-template-columns: 220px 1fr;
+    gap: 25px;
+    align-items: center;
+  }
+  
+  .about-section h2 {
+    grid-column: 1 / -1;
+  }
+  
+  .profile-figure {
+    text-align: center;
+  }
+  
+  .profile-figure img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .profile-figure figcaption {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .bio-content {
+    font-size: 17px;
+  }
+  
+  /* ================= SKILLS ================= */
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .skill-category {
+    padding: 20px;
+    background: #f1f5f9;
+    border-radius: 10px;
+  }
+  
+  .skill-category h3 {
+    margin-bottom: 10px;
+  }
+  
+  .skill-category ul {
+    padding-left: 20px;
+  }
+  
+  /* ================= PROJECTS ================= */
+  
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .project-card {
+    padding: 25px;
+    background: #f1f5f9;
+    border-radius: 10px;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .project-card a {
+    color: #0284c7;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  /* ================= CONTACT ================= */
+  
+  .contact-form {
+    max-width: 700px;
+    margin-top: 20px;
+  
+    display: grid;
+    gap: 18px;
+  }
+  
+  .form-group {
+    display: grid;
+    gap: 7px;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .btn-submit {
+    width: fit-content;
+    border: none;
+    background: #0284c7;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* ================= FOOTER ================= */
+  
+  .site-footer {
+    background: #1e293b;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  
+  .footer-container {
+    max-width: 1100px;
+    margin: auto;
+  
+    display: grid;
+    gap: 15px;
+  }
+  
+  .author-contact a {
+    color: #38bdf8;
+  }
+  
+  .social-list {
+    list-style: none;
+  
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .social-list a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* ================= RESPONSIVE ================= */
+  
+  @media (max-width: 700px) {
+  
+    .header-container {
+      flex-direction: column;
+    }
+  
+    .nav-list {
+      justify-content: center;
+      gap: 15px;
+    }
+  
+    .hero-section h1 {
+      font-size: 30px;
+    }
+  
+    .about-section {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  
+    .skills-grid,
+    .projects-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  .services-container {
+    display: grid;
+    gap: 20px;
+    /* Mặc định cho Mobile (< 768px): 1 cột */
+    grid-template-columns: 1fr;
+  }
+  
+  /* Tablet (Từ 768px đến 1024px): 2 cột */
+  @media (min-width: 768px) {
+    .services-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Desktop (> 1024px): 4 cột */
+  @media (min-width: 1024px) {
+    .services-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  /* Khai báo Design System tại :root */
+:root {
+    /* Màu sắc */
+    --bg-card: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --primary: #2563eb;
+    --border-color: #e5e7eb;
+  
+    /* Khoảng cách (Spacing) */
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    
+    /* Bo góc */
+    --radius-md: 8px;
+  }
+  
+  /* Áp dụng biến vào class .card */
+  .card {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  }
+  
+  .card h3 {
+    color: var(--primary);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .card p {
+    color: var(--text-muted);
+    margin-bottom: var(--space-md);
+  }
