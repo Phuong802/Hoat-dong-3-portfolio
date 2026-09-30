@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Homework Tuần 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- BÀI 3: Smart Navigation Bar & BÀI 4: Nút Dark Mode -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="brand-logo">MyPortfolio</a>
+            
+            <button class="menu-btn" id="menuBtn">☰ Menu</button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#gallery">Dự án</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                    <!-- Nút chuyển đổi Dark/Light Theme -->
+                    <li><button id="themeToggle" class="btn-theme">🌙 Dark Mode</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <!-- BÀI 1: Responsive Typography (Áp dụng lên các thẻ h1, p) -->
+        <section class="hero-section">
+            <h1>Chào mừng đến với <span class="highlight">Portfolio</span></h1>
+            <p>Thiết kế đáp ứng tiêu chí Mobile-First và CSS Variables.</p>
+        </section>
+
+        <!-- BÀI 2: Adaptive Card Layout (Flexbox) -->
+        <section id="about" class="section-container">
+            <h2>Giới thiệu bản thân</h2>
+            <div class="adaptive-card">
+                <img src="https://i.pinimg.com/1200x/d0/1f/f4/d01ff4b1e16a1f2bab8bfb5d0a7ed15c.jpg" alt="Avatar" class="card-image">
+                <div class="card-content">
+                    <h3>Frontend Developer</h3>
+                    <p>Mình là Phạm Phương Phát, mình đang học công nghệ thông tin, cái này là mình demo AI làm thôi, chứ thiệt mình biết làm cái này dư sức chỉ là nó hơi lâu.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BÀI 5: Responsive Image Gallery (CSS Grid auto-fit) -->
+        <section id="gallery" class="section-container">
+            <h2>Dự án nổi bật</h2>
+            <div class="project-grid">
+                <h4> Project 1: Làm trang Web học Tiếng Anh bằng Flashcard</h4>
+                <p>Link ở đây <a href="https://github.com/tentaxxx8-max/PhamQuizFuck" target="_blank"> đây </a></p>
+                 <h4> Project 2: Làm trang Web chúc mừng sinh nhật</h4>
+                <p>Link ở đây <a href="https://github.com/tentaxxx8-max/birthday-gift-site" target="_blank"> đây </a></p>
+                
+            </div>
+        </section>
+
+        <!-- BÀI 6: Mobile-First Contact Form -->
+        <section id="contact" class="section-container">
+            <h2>Liên hệ với tôi</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label>Họ tên</label>
+                    <input type="text" placeholder="Nhập họ tên...">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Nhập email...">
+                </div>
+                <div class="form-group">
+                    <label>Nội dung</label>
+                    <textarea rows="4" placeholder="Nhập nội dung..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Gửi tin nhắn</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Script nhỏ để Bài 3 và Bài 4 hoạt động -->
+    <script>
+        // Mở/đóng Menu trên Mobile (Bài 3)
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Toggle Dark/Light Mode (Bài 4)
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if(document.body.classList.contains('dark-theme')) {
+                themeToggle.innerText = '☀️ Light Mode';
+            } else {
+                themeToggle.innerText = '🌙 Dark Mode';
+            }
+        });
+    </script>
+</body>
+</html>
