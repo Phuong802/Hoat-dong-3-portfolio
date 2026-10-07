@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Phạm Phương Phát</title>
+    <!-- Nhúng file định dạng giao diện CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- HOẠT ĐỘNG 3: Thư viện hiệu ứng AOS (Animate On Scroll) qua CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+
+    <!-- =======================================================================
+         📌 [KHU VỰC 1] THANH ĐIỀU HƯỚNG & MENU (HEADER)
+         👉 Quản lý: Tên thương hiệu/Logo, các liên kết Menu, Nút Dark Mode
+         ======================================================================= -->
+    <header class="site-header">
+        <div class="header-container">
+            <!-- Thay đổi tên thương hiệu hoặc Logo ở đây -->
+            <a href="#" class="brand-logo">⚡ MyPortfolio</a>
+            
+            <!-- Nút bấm mở Menu trên điện thoại -->
+            <button class="menu-btn" id="menuBtn" aria-label="Mở menu">☰ Menu</button>
+            
+            <!-- Danh sách các liên kết trong Menu -->
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#gallery">Dự án</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                    <!-- Nút bấm chuyển đổi chế độ Sáng / Tối -->
+                    <li><button id="themeToggle" class="btn-theme" type="button">🌙 Dark Mode</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- NỘI DUNG CHÍNH CỦA TRANG WEB -->
+    <main class="site-main">
+
+        <!-- ===================================================================
+             📌 [KHU VỰC 2] BANNER CHÀO MỪNG (HERO SECTION)
+             👉 Quản lý: Lời chào, khẩu hiệu (Slogan), tiêu đề chính
+             =================================================================== -->
+        <section class="hero-section" data-aos="fade-down" data-aos-duration="1000">
+            <h1>Chào mừng đến với <span class="highlight">Portfolio</span> của tôi</h1>
+            <p>Thiết kế đáp ứng tiêu chí Mobile-First, giao diện hiện đại và tối ưu hóa quản lý dữ liệu.</p>
+        </section>
+
+        <!-- ===================================================================
+             📌 [KHU VỰC 3] THÔNG TIN BẢN THÂN (ABOUT ME)
+             👉 Quản lý: Link ảnh đại diện (Avatar), chức danh, lời giới thiệu
+             =================================================================== -->
+        <section id="about" class="section-container" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Giới thiệu bản thân</h2>
+            <div class="adaptive-card">
+                <!-- Thay link ảnh đại diện của bạn vào thuộc tính src dưới đây -->
+                <img src="https://i.pinimg.com/1200x/d0/1f/f4/d01ff4b1e16a1f2bab8bfb5d0a7ed15c.jpg" 
+                     alt="Ảnh đại diện Phạm Phương Phát" 
+                     class="card-image">
+
+                <div class="card-content">
+                    <!-- Chức danh / Nghề nghiệp mong muốn -->
+                    <h3>Frontend Developer</h3>
+                    <!-- Đoạn văn giới thiệu về bản thân bạn -->
+                    <p>
+                        Mình là <strong>Phạm Phương Phát</strong>, hiện đang học ngành Công nghệ Thông tin. 
+                        Mình đam mê xây dựng các giao diện web trực quan, thân thiện với người dùng và có trải nghiệm mượt mà trên mọi thiết bị.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             📌 [KHU VỰC 4] DANH SÁCH DỰ ÁN NỔI BẬT (PROJECTS)
+             👉 HƯỚNG DẪN THÊM DỰ ÁN MỚI:
+                Muốn thêm dự án mới, bạn chỉ cần sao chép (copy) toàn bộ thẻ:
+                <article class="project-card"> ... </article>
+                rồi dán ngay phía dưới và thay đổi thông tin tương ứng.
+             =================================================================== -->
+        <section id="gallery" class="section-container" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Dự án nổi bật</h2>
+            
+            <div class="project-grid">
+                <!-- --- DỰ ÁN SỐ 1 --- -->
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="project-badge">Dự án 01</span>
+                    <h3 class="project-title">Web học Tiếng Anh bằng Flashcard</h3>
+                    <p class="project-desc">Trang web hỗ trợ học từ vựng tiếng Anh tương tác qua các thẻ ghi nhớ trực quan.</p>
+                    <a href="https://github.com/tentaxxx8-max/PhamQuizFuck" target="_blank" rel="noopener noreferrer" class="project-link">
+                        Xem mã nguồn trên GitHub &rarr;
+                    </a>
+                </article>
+
+                <!-- --- DỰ ÁN SỐ 2 --- -->
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="project-badge">Dự án 02</span>
+                    <h3 class="project-title">Web chúc mừng sinh nhật</h3>
+                    <p class="project-desc">Trang web quà tặng sinh nhật với hiệu ứng hoạt hình và bất ngờ dành cho người nhận.</p>
+                    <a href="https://github.com/tentaxxx8-max/birthday-gift-site" target="_blank" rel="noopener noreferrer" class="project-link">
+                        Xem mã nguồn trên GitHub &rarr;
+                    </a>
+                </article>
+
+                <!-- 💡 BẠN MUỐN THÊM DỰ ÁN THỨ 3? HÃY SAO CHÉP MẪU DƯỚI ĐÂY:
+                <article class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <span class="project-badge">Dự án 03</span>
+                    <h3 class="project-title">Tên dự án mới của bạn</h3>
+                    <p class="project-desc">Mô tả ngắn gọn chức năng của dự án...</p>
+                    <a href="https://github.com/..." target="_blank" rel="noopener noreferrer" class="project-link">
+                        Xem mã nguồn trên GitHub &rarr;
+                    </a>
+                </article>
+                -->
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             📌 [KHU VỰC 5] BIỂU MẪU LIÊN HỆ (CONTACT FORM)
+             👉 Quản lý: Các trường nhập dữ liệu để người khác gửi tin nhắn cho bạn
+             =================================================================== -->
+        <section id="contact" class="section-container" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Liên hệ với tôi</h2>
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Họ và tên</label>
+                    <input type="text" id="name" name="name" placeholder="Nhập họ và tên của bạn..." required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Địa chỉ Email</label>
+                    <input type="email" id="email" name="email" placeholder="Nhập email của bạn (ví dụ: email@gmail.com)..." required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Nội dung tin nhắn</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Để lại lời nhắn cho tôi tại đây..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Gửi tin nhắn</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- =======================================================================
+         📌 [KHU VỰC 6] CHÂN TRANG (FOOTER)
+         👉 Quản lý: Bản quyền và thông tin cuối trang
+         ======================================================================= -->
+    <footer class="site-footer">
+        <p>© 2026 Phạm Phương Phát. All rights reserved.</p>
+    </footer>
+
+    <!-- Script nhỏ để Bài 3 và Bài 4 hoạt động (giữ nguyên gốc trong file HTML) -->
+    <script>
+        // Mở/đóng Menu trên Mobile (Bài 3)
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Toggle Dark/Light Mode (Bài 4)
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if(document.body.classList.contains('dark-theme')) {
+                themeToggle.innerText = '☀️ Light Mode';
+            } else {
+                themeToggle.innerText = '🌙 Dark Mode';
+            }
+        });
+    </script>
+
+    <!-- =======================================================================
+         HOẠT ĐỘNG 3: THƯ VIỆN HIỆU ỨNG CUỘN TRANG AOS (ANIMATE ON SCROLL)
+         👉 CDN JavaScript của thư viện AOS và hàm khởi tạo hiệu ứng
+         ======================================================================= -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Khởi tạo thư viện AOS
+        AOS.init({
+            duration: 800, // Thời gian chạy hiệu ứng mỗi lần xuất hiện (800ms)
+            once: false,   // false: mỗi khi cuộn qua lại đều kích hoạt hiệu ứng (true: chỉ chạy 1 lần đầu)
+        });
+    </script>
+</body>
+</html>
