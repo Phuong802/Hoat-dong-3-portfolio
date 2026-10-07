@@ -1,0 +1,140 @@
+:root {
+    /* Màu sắc */
+    --primary-color: #2855a6;
+    --primary-hover-color: #243047;
+    --text-color: #243047;
+    --text-muted-color: #52617a;
+    --bg-body: #f3f6fb;
+    --bg-surface: #ffffff;
+    --text-light: #ffffff;
+    --border-color: #dce4f0;
+  
+    /* Khoảng cách & Kích thước */
+    --spacing-xs: 12px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+  
+    /* Bo góc */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--bg-body);
+  }
+  
+  .container {
+    width: min(100% - var(--spacing-lg), 900px);
+    margin: 0 auto;
+  }
+  
+  .site-header {
+    padding: var(--spacing-lg) 0;
+    color: var(--text-light);
+    background-color: var(--primary-color);
+  }
+  
+  .site-header h1 {
+    margin: 0 0 var(--spacing-xs);
+    font-size: 2rem;
+  }
+  
+  .site-header p {
+    margin: 0;
+  }
+  
+  .site-header .eyebrow {
+    margin: 0 0 var(--spacing-xs);
+    font-weight: bold;
+  }
+  
+  .intro {
+    margin: var(--spacing-lg) 0 var(--spacing-md);
+  }
+  
+  .intro h2,
+  .note h2 {
+    margin: 0 0 var(--spacing-xs);
+    color: var(--primary-color);
+  }
+  
+  .intro p,
+  .note p {
+    margin: 0;
+    color: var(--text-muted-color);
+  }
+  
+  .activity-list {
+    display: grid;
+    gap: var(--spacing-sm);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  }
+  
+  .activity-card {
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface);
+  }
+  
+  .activity-card h3 {
+    margin: 0 0 var(--spacing-xs);
+    color: var(--primary-color);
+  }
+  
+  .activity-card p {
+    margin: 0 0 var(--spacing-md);
+    color: var(--text-muted-color);
+  }
+  
+  .action-link {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    color: var(--text-light);
+    background-color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .action-link:hover,
+  .action-link:focus-visible {
+    background-color: var(--primary-hover-color);
+  }
+  
+  .note {
+    margin: var(--spacing-md) 0 var(--spacing-lg);
+    padding: var(--spacing-md);
+    border-left: 4px solid var(--primary-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-surface);
+  }
+  
+  .site-footer {
+    padding: var(--spacing-md) 0;
+    color: var(--text-muted-color);
+    background-color: var(--bg-surface);
+  }
+.activity-card {
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.activity-card:hover {
+  transform: translateY(-6px); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}

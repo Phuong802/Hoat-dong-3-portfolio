@@ -314,3 +314,97 @@ input, textarea {
 a {
   color:purple 
 }
+/* ==========================================
+   1. TRẠNG THÁI DEFAULT (BÌNH THƯỜNG)
+   ========================================== */
+.btn-send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background-color: #4f46e5; /* Màu chủ đạo (Indigo) */
+  color: #ffffff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  
+  /* Đổ bóng nhẹ ban đầu */
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+
+  /* Cấu hình transition với cubic-bezier tạo cảm giác nảy tự nhiên */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.25s ease,
+              box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-send .btn-icon {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ==========================================
+   2. TRẠNG THÁI HOVER (RÊ CHUỘT)
+   ========================================== */
+.btn-send:hover {
+  background-color: #4338ca; /* Đổi màu nền sẫm hơn */
+  transform: translateY(-3px); /* Nâng nút lên 3px */
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.45); /* Bóng đậm và xòe rộng hơn */
+}
+
+/* Hiệu ứng phụ: Icon nhích nhẹ sang phải khi Hover */
+.btn-send:hover .btn-icon {
+  transform: translateX(3px) translateY(-1px);
+}
+
+/* ==========================================
+   3. TRẠNG THÁI ACTIVE / CLICK (NHẤN CHUỘT)
+   ========================================== */
+.btn-send:active {
+  /* Scale 0.95 tạo cảm giác nén vật lý khi bấm */
+  transform: translateY(-1px) scale(0.95);
+  box-shadow: 0 3px 8px rgba(79, 70, 229, 0.3); /* Bóng xẹp lại theo lực nén */
+  
+  /* Rút ngắn thời gian phản hồi khi bấm trực tiếp */
+  transition-duration: 0.08s;
+}
+/* Thiết kế vòng tròn Loading */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background-color: var(--bg-surface, #ffffff);
+  border-radius: var(--radius-md, 10px);
+  border: 1px solid var(--border-color, #dce4f0);
+  margin: 24px 0;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #dce4f0;        
+  border-top-color: #2855a6;       
+  border-radius: 50%;              
+  animation: spin 1s linear infinite; 
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  margin-top: 12px;
+  color: var(--text-muted-color, #52617a);
+  font-size: 0.95rem;
+}

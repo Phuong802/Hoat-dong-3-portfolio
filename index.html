@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+    <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Góc học tập - AOS Animation</title>
+  
+  <!-- 1. Thêm CSS của AOS qua CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Homework Tuần 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- 2. Thêm JS của AOS qua CDN và khởi tạo -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800, // Thời gian chạy hiệu ứng (tính bằng mili-giây, ví dụ 800ms)
+      once: true,    // Hiệu ứng chỉ chạy 1 lần khi cuộn tới (không lặp lại mỗi lần cuộn lên xuống)
+    });
+  </script>
+</body>
+</html>
+<body>
+    <!-- BÀI 3: Smart Navigation Bar & BÀI 4: Nút Dark Mode -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="brand-logo">MyPortfolio</a>
+            
+            <button class="menu-btn" id="menuBtn">☰ Menu</button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#gallery">Dự án</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                    <!-- Nút chuyển đổi Dark/Light Theme -->
+                    <li><button id="themeToggle" class="btn-theme">🌙 Dark Mode</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <!-- BÀI 1: Responsive Typography (Áp dụng lên các thẻ h1, p) -->
+        <section class="hero-section">
+            <h1>Chào mừng đến với <span class="highlight">Portfolio</span></h1>
+            <p>Thiết kế đáp ứng tiêu chí Mobile-First và CSS Variables.</p>
+        </section>
+
+        <!-- BÀI 2: Adaptive Card Layout (Flexbox) -->
+        <section id="about" class="section-container">
+            <h2>Giới thiệu bản thân</h2>
+            <div class="adaptive-card">
+                <img src="https://i.pinimg.com/1200x/d0/1f/f4/d01ff4b1e16a1f2bab8bfb5d0a7ed15c.jpg" alt="Avatar" class="card-image">
+                <div class="card-content">
+                    <h3>Frontend Developer</h3>
+                    <p>Mình là Phạm Phương Phát, mình đang học công nghệ thông tin, cái này là mình demo AI làm thôi, chứ thiệt mình biết làm cái này dư sức chỉ là nó hơi lâu.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BÀI 5: Responsive Image Gallery (CSS Grid auto-fit) -->
+        <section id="gallery" class="section-container">
+            <h2>Dự án nổi bật</h2>
+            <div class="project-grid">
+                <h4> Project 1: Làm trang Web học Tiếng Anh bằng Flashcard</h4>
+                <p>Link ở đây <a href="https://github.com/tentaxxx8-max/PhamQuizFuck" target="_blank"> đây </a></p>
+                 <h4> Project 2: Làm trang Web chúc mừng sinh nhật</h4>
+                <p>Link ở đây <a href="https://github.com/tentaxxx8-max/birthday-gift-site" target="_blank"> đây </a></p>
+                
+            </div>
+        </section>
+
+        <!-- BÀI 6: Mobile-First Contact Form -->
+        <section id="contact" class="section-container">
+            <h2>Liên hệ với tôi</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label>Họ tên</label>
+                    <input type="text" placeholder="Nhập họ tên...">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Nhập email...">
+                </div>
+                <div class="form-group">
+                    <label>Nội dung</label>
+                    <textarea rows="4" placeholder="Nhập nội dung..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Gửi tin nhắn</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Script nhỏ để Bài 3 và Bài 4 hoạt động -->
+    <script>
+        // Mở/đóng Menu trên Mobile (Bài 3)
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Toggle Dark/Light Mode (Bài 4)
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if(document.body.classList.contains('dark-theme')) {
+                themeToggle.innerText = '☀️ Light Mode';
+            } else {
+                themeToggle.innerText = '🌙 Dark Mode';
+            }
+        });
+    </script>
+</body>
+<button class="btn-send">
+  <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="22" y1="2" x2="11" y2="13"></line>
+    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+  </svg>
+  <span>Gửi tin nhắn</span>
+</button>
+<section class="loading-container" aria-label="Trạng thái tải">
+    <div class="spinner" role="status"></div>
+    <p class="loading-text">Đang tải dữ liệu portfolio...</p>
+  </section>
+  <main class="container">
+    <!-- Hiệu ứng hiện dần và trượt lên -->
+    <section class="intro" data-aos="fade-up" aria-labelledby="intro-title">
+      <h2 id="intro-title">Kế hoạch hôm nay</h2>
+      <p>Chọn một hoạt động, ghi lại điều đã học và chia sẻ với bạn cùng nhóm.</p>
+    </section>
+
+    <section class="activity-list" aria-label="Danh sách hoạt động">
+      <!-- Thẻ xuất hiện trước -->
+      <article class="activity-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Đọc tài liệu</h3>
+        <p>Ôn lại cú pháp khai báo biến tại <code>:root</code> và cách dùng <code>var()</code>.</p>
+        <a class="action-link" href="#ghi-chu">Xem ghi chú</a>
+      </article>
+
+      <!-- Thẻ xuất hiện sau một chút nhờ delay -->
+      <article class="activity-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Thử thay đổi</h3>
+        <p>Đổi một màu và một khoảng cách trong CSS, rồi quan sát toàn bộ trang.</p>
+        <a class="action-link" href="#ghi-chu">Ghi kết quả</a>
+      </article>
+    </section>
+
+    <section class="note" id="ghi-chu" data-aos="fade-up" aria-labelledby="note-title">
+      <h2 id="note-title">Ghi chú thực hành</h2>
+      <p>Khi hai phần tử dùng cùng một biến, chỉ cần sửa biến đó để cập nhật cả hai.</p>
+    </section>
+  </main>
+</html>
