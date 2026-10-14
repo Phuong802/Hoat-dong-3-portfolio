@@ -1,39 +1,54 @@
 /* =============================================================================
-   MỤC LỤC STYLE.CSS (BẠN CÓ THỂ BẤM TÌM KIẾM ĐỂ TỚI NHANH MỤC CẦN SỬA)
+   PORTFOLIO - PHẠM PHƯƠNG PHÁT (STYLE.CSS - REFACTORED & OPTIMIZED)
    -----------------------------------------------------------------------------
-   1. BẢNG MÀU & BIẾN CƠ BẢN (Muốn đổi màu trang web thì sửa ở đây)
-   2. GIAO DIỆN TỐI (DARK MODE)
-   3. BẢN LỀ RESET & CÀI ĐẶT TOÀN TRANG
-   4. THANH ĐIỀU HƯỚNG & HEADER (Bài 3: Smart Navigation)
-   5. PHẦN CHÀO MỪNG (HERO SECTION - Bài 1: Responsive Typography)
-   6. GIỚI THIỆU BẢN THÂN (ABOUT ME - Bài 2: Adaptive Card Flexbox)
-   7. DANH SÁCH DỰ ÁN (PROJECT CARDS - Bài 5: Responsive Grid)
-   8. FORM LIÊN HỆ (Bài 6: Mobile-First Contact Form)
-   9. CHÂN TRANG (FOOTER)
+   Cấu trúc chuẩn 3 tầng:
+   1. BASE: CSS Variables (:root, Dark Mode), Reset, Typography, Global Setup, GPU Group
+   2. LAYOUT: Header, Main, Section Container, Grid, Footer, Responsive Breakpoints
+   3. COMPONENTS: Buttons (Micro-interactions), Navigation, Cards, Form, Loading Spinner
    ============================================================================= */
 
 /* =============================================================================
-   1. BẢNG MÀU & BIẾN CƠ BẢN (CHẾ ĐỘ SÁNG MẶC ĐỊNH)
-   👉 MẸO: Muốn đổi màu chủ đạo (ví dụ từ Xanh Dương sang Xanh Lá hay Tím),
-   chỉ cần thay mã màu tại dòng --primary và --primary-hover!
+   1. BASE (NỀN TẢNG & BIẾN TOÀN CỤC)
    ============================================================================= */
+
+/* 1.1 BIẾN TOÀN TRANG (CSS VARIABLES - LIGHT THEME MẶC ĐỊNH) */
 :root {
-  /* --- Nhóm 1.1: Màu chủ đạo (Brand Colors) --- */
-  --primary: #0284c7;        /* Màu xanh dương chủ đạo */
-  --primary-hover: #0369a1;  /* Màu khi di chuột vào nút bấm */
-  --secondary: #38bdf8;      /* Màu xanh ngọc phụ trợ */
+  /* --- Bảng màu thương hiệu (Brand Colors) --- */
+  --primary: #0284c7;                  /* Xanh dương chủ đạo */
+  --primary-hover: #0369a1;            /* Xanh dương đậm khi hover */
+  --primary-rgb: 2, 132, 199;          /* Kênh RGB dùng cho hàm rgba() */
+  --secondary: #38bdf8;                /* Xanh ngọc cyan phụ trợ */
+  --secondary-rgb: 56, 189, 248;
+  --accent: #0ea5e9;
+  --brand-color: var(--primary);       /* Màu điểm nhấn động theo Theme */
 
-  /* --- Nhóm 1.2: Màu nền & Khối nội dung (Light Theme) --- */
-  --bg-body: #f4f6f8;        /* Nền tổng thể toàn bộ trang */
-  --bg-section: #ffffff;     /* Nền của từng phần (Hero, About, Projects, Contact) */
-  --bg-card: #f8fafc;        /* Nền của các thẻ card bên trong */
-  --border-color: #e2e8f0;   /* Màu viền phân cách */
+  /* --- Màu nền & Bề mặt (Surface & Background) --- */
+  --bg-body: #f4f6f8;                  /* Nền tổng thể */
+  --bg-section: #ffffff;               /* Nền section */
+  --bg-card: #f8fafc;                  /* Nền card con */
+  --border-color: #e2e8f0;             /* Viền phân cách */
 
-  /* --- Nhóm 1.3: Màu chữ (Typography Colors) --- */
-  --text-main: #1f2937;      /* Chữ đậm chính (tiêu đề, nội dung chính) */
-  --text-muted: #64748b;     /* Chữ phụ nhạt hơn (mô tả, ngày tháng) */
+  /* --- Màu chữ (Typography Colors) --- */
+  --text-main: #1f2937;                /* Chữ đậm chính */
+  --text-muted: #64748b;               /* Chữ phụ, mô tả */
+  --text-on-primary: #ffffff;          /* Chữ trắng tương phản trên nền nút */
 
-  /* --- Nhóm 1.4: Khoảng cách (Spacing) & Bo tròn (Border Radius) --- */
+  /* --- Màu thành phần chuyên biệt (Component Variables) --- */
+  --badge-color: var(--primary);
+  --badge-bg: rgba(var(--primary-rgb), 0.12);
+  --focus-ring: rgba(var(--primary-rgb), 0.25);
+  --spinner-track: rgba(var(--primary-rgb), 0.2);
+  --spinner-head: var(--primary);
+
+  /* --- Hiệu ứng đổ bóng (Shadows) --- */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-btn: 0 4px 12px rgba(var(--primary-rgb), 0.25);
+  --shadow-btn-hover: 0 8px 22px rgba(var(--primary-rgb), 0.45);
+  --shadow-btn-active: 0 3px 8px rgba(var(--primary-rgb), 0.3);
+
+  /* --- Khoảng cách & Bo tròn (Spacing & Radius) --- */
+  --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
@@ -43,46 +58,46 @@
   --radius-lg: 16px;
   --radius-circle: 50%;
 
-  /* --- Nhóm 1.5: Hiệu ứng đổ bóng (Shadow) --- */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  /* --- Chuyển động (Transitions & Timing Functions) --- */
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
 
-  /* --- Nhóm 1.6: Kích thước chữ Responsive (Bài 1) --- */
-  --h1-size: 1.8rem;
-  --h2-size: 1.4rem;
+  /* --- Kích thước chữ Responsive --- */
+  --h1-size: 1.85rem;
+  --h2-size: 1.45rem;
   --h3-size: 1.2rem;
   --p-size: 1rem;
 }
 
-/* Tự động tăng cỡ chữ khi xem trên màn hình lớn từ Tablet/PC (>= 600px) */
-@media (min-width: 600px) {
-  :root {
-    --h1-size: 2.5rem;
-    --h2-size: 1.8rem;
-    --h3-size: 1.35rem;
-    --p-size: 1.05rem;
-  }
-}
-
-/* =============================================================================
-   2. GIAO DIỆN TỐI (DARK MODE - Bài 4)
-   Khi bấm nút Dark Mode, class .dark-theme được gắn vào thẻ body và các biến đổi màu
-   ============================================================================= */
+/* 1.2 GIAO DIỆN TỐI (DARK MODE - GHI ĐÈ BIẾN CSS) */
 body.dark-theme {
-  --bg-body: #0f172a;        /* Nền trang chuyển thành xanh đêm tối */
-  --bg-section: #1e293b;     /* Nền các section tối dịu mắt */
-  --bg-card: #273549;        /* Nền thẻ card tối */
-  --border-color: #334155;   /* Màu viền tối */
-  --text-main: #f8fafc;      /* Chữ chính chuyển sang trắng sáng */
-  --text-muted: #94a3b8;     /* Chữ phụ xám sáng */
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.4);
+  --bg-body: #0b1120;
+  --bg-section: #151f32;
+  --bg-card: #1e293b;
+  --border-color: #334155;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --brand-color: var(--secondary);     /* Tự động đổi điểm nhấn sang cyan phát sáng */
+
+  /* Đổi biến thành phần theo Dark Theme không cần selector con */
+  --badge-color: var(--secondary);
+  --badge-bg: rgba(var(--secondary-rgb), 0.15);
+  --focus-ring: rgba(var(--secondary-rgb), 0.25);
+  --spinner-track: rgba(var(--secondary-rgb), 0.2);
+  --spinner-head: var(--secondary);
+
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.5);
+  --shadow-btn: 0 4px 14px rgba(var(--secondary-rgb), 0.3);
+  --shadow-btn-hover: 0 8px 24px rgba(var(--secondary-rgb), 0.55);
+  --shadow-btn-active: 0 3px 8px rgba(var(--secondary-rgb), 0.35);
 }
 
-/* =============================================================================
-   3. BẢN LỀ RESET & CÀI ĐẶT TOÀN TRANG
-   ============================================================================= */
-* {
+/* 1.3 THIẾT LẬP RESET & TOÀN CỤC */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -97,18 +112,36 @@ body {
   background-color: var(--bg-body);
   color: var(--text-main);
   line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  overflow-x: hidden; /* Giúp các hiệu ứng trượt AOS không làm xuất hiện thanh cuộn ngang */
+  overflow-x: hidden; /* Ngăn vỡ layout khi hiệu ứng AOS trượt vào */
+  transition: background-color var(--duration-normal) ease, color var(--duration-normal) ease;
 }
 
-h1 { font-size: var(--h1-size); font-weight: 700; line-height: 1.2; }
+/* 1.4 THẺ NỘI DUNG MẶC ĐỊNH (TYPOGRAPHY) */
+h1 { font-size: var(--h1-size); font-weight: 700; line-height: 1.2; margin-bottom: var(--space-sm); }
 h2 { font-size: var(--h2-size); font-weight: 700; margin-bottom: var(--space-md); }
 h3 { font-size: var(--h3-size); font-weight: 600; }
 p  { font-size: var(--p-size); color: var(--text-muted); }
-a  { color: var(--primary); text-decoration: none; transition: 0.2s ease; }
-a:hover { color: var(--primary-hover); }
+a  { color: var(--brand-color); text-decoration: none; }
+img { display: block; max-width: 100%; }
 
-/* Bọc nội dung trang ở giữa, không bị bè ra hai bên màn hình lớn */
+/* 1.5 TỐI ƯU HIỆU NĂNG PHẦN CỨNG GPU (GỘP CHUNG QUY TẮC HARDWARE ACCELERATION) */
+.btn-submit,
+.menu-btn,
+.btn-theme,
+.nav-list a,
+.project-card,
+.project-link,
+.card-image,
+.loading-spinner {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* =============================================================================
+   2. LAYOUT (BỐ CỤC KHUNG VÀ VÙNG CHỨA)
+   ============================================================================= */
+
+/* 2.1 KHUNG CHÍNH TOÀN TRANG */
 .site-main {
   max-width: 1000px;
   margin: 0 auto;
@@ -124,20 +157,18 @@ a:hover { color: var(--primary-hover); }
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color var(--duration-normal) ease, border-color var(--duration-normal) ease;
 }
 
-/* =============================================================================
-   4. THANH ĐIỀU HƯỚNG & HEADER (Bài 3: Smart Navigation)
-   ============================================================================= */
+/* 2.2 HEADER & THANH ĐIỀU HƯỚNG (STICKY) */
 .site-header {
   background-color: var(--bg-section);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   box-shadow: var(--shadow-sm);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color var(--duration-normal) ease, border-color var(--duration-normal) ease;
 }
 
 .header-container {
@@ -150,46 +181,181 @@ a:hover { color: var(--primary-hover); }
   flex-wrap: wrap;
 }
 
-.brand-logo {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* 2.3 GRID BỐ CỤC DỰ ÁN */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
 }
 
-/* Nút ☰ Menu hiển thị trên điện thoại */
+/* 2.4 CHÂN TRANG (FOOTER) */
+.site-footer {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: var(--space-xl);
+}
+
+/* 2.5 BỐ CỤC ĐÁP ỨNG TRÊN MÀN HÌNH LỚN (RESPONSIVE LAYOUT BREAKPOINTS) */
+@media (min-width: 600px) {
+  :root {
+    --h1-size: 2.5rem;
+    --h2-size: 1.85rem;
+    --h3-size: 1.35rem;
+    --p-size: 1.05rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Điều hướng header sang dạng ngang trên Desktop */
+  .menu-btn {
+    display: none;
+  }
+  .nav-menu {
+    display: block;
+    width: auto;
+    margin-top: 0;
+  }
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  /* Bố cục dàn ngang thẻ giới thiệu */
+  .adaptive-card {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    padding: var(--space-xl);
+  }
+  .card-content {
+    text-align: left;
+  }
+
+  /* Căn giữa và giới hạn độ rộng Form trên Desktop */
+  .contact-form {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+}
+
+/* =============================================================================
+   3. COMPONENTS (CÁC THÀNH PHẦN GIAO DIỆN)
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   3.1 NÚT BẤM (BUTTONS) & MICRO-INTERACTIONS
+   ----------------------------------------------------------------------------- */
+/* Gộp các thuộc tính cơ bản của nút bấm */
+.btn-submit,
+.menu-btn,
+.btn-theme {
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+/* Gộp hiệu ứng nhích nhẹ khi hover các nút phụ và menu link */
+.menu-btn:hover,
+.btn-theme:hover,
+.nav-list a:hover {
+  transform: translateY(-2px);
+}
+
+/* Gộp trạng thái active đàn hồi của các nút phụ */
+.menu-btn:active,
+.btn-theme:active {
+  transform: translateY(0);
+}
+
+/* Nút mở Menu trên Mobile */
 .menu-btn {
   display: block;
   background-color: var(--primary);
-  color: #ffffff;
+  color: var(--text-on-primary);
   border: none;
   padding: 8px 14px;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-  will-change: transform; /* Tối ưu GPU Acceleration */
+  transition: background-color var(--duration-fast) ease, transform var(--duration-fast) ease;
 }
 
 .menu-btn:hover {
   background-color: var(--primary-hover);
-  transform: translateY(-1px); /* Tối ưu GPU: Dùng translateY thay cho top: -1px */
 }
 
-.menu-btn:active {
-  transform: translateY(0);
+/* Nút chuyển đổi Dark/Light Mode */
+.btn-theme {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color var(--duration-fast) ease, border-color var(--duration-fast) ease, transform var(--duration-fast) ease;
 }
 
-/* Menu điều hướng - Mặc định ẩn trên màn hình nhỏ */
+.btn-theme:hover {
+  background-color: var(--border-color);
+}
+
+/* 👉 HOẠT ĐỘNG 1: NÚT "GỬI TIN NHẮN" (MICRO-INTERACTIONS) */
+.btn-submit {
+  width: 100%;
+  padding: 14px 28px;
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+  border: none;
+  font-size: var(--p-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  box-shadow: var(--shadow-btn);
+
+  /* 1. Transition tự nhiên mượt mà với cubic-bezier */
+  transition: transform var(--duration-normal) var(--ease-elastic),
+              background-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-normal) var(--ease-elastic);
+}
+
+/* Hover: Nhích lên 3px bằng translateY, đổi màu, box-shadow đậm hơn */
+.btn-submit:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-btn-hover);
+}
+
+/* Active: Thu nhỏ nhẹ scale(0.97) tạo cảm giác lún thật khi bấm */
+.btn-submit:active {
+  transform: translateY(-1px) scale(0.97);
+  box-shadow: var(--shadow-btn-active);
+}
+
+/* -----------------------------------------------------------------------------
+   3.2 THANH MENU & BRAND LOGO
+   ----------------------------------------------------------------------------- */
+.brand-logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--brand-color);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  letter-spacing: -0.5px;
+}
+
 .nav-menu {
   display: none;
   width: 100%;
   margin-top: var(--space-md);
 }
 
-/* Khi JavaScript thêm class 'active', menu bung ra */
 .nav-menu.active {
   display: block;
 }
@@ -205,92 +371,43 @@ a:hover { color: var(--primary-hover); }
   color: var(--text-main);
   font-weight: 500;
   display: inline-block;
-  transition: color 0.2s ease, transform 0.2s ease;
-  will-change: transform; /* Tối ưu GPU Acceleration */
+  transition: color var(--duration-fast) ease, transform var(--duration-fast) ease;
 }
 
 .nav-list a:hover {
-  color: var(--primary);
-  transform: translateY(-1px); /* Tối ưu GPU: Dùng translateY thay cho top: -1px */
+  color: var(--brand-color);
 }
 
-/* Nút chuyển đổi Dark Mode */
-.btn-theme {
-  background: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--text-main);
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-  will-change: transform; /* Tối ưu GPU Acceleration */
-}
-
-.btn-theme:hover {
-  background-color: var(--border-color);
-  transform: translateY(-1px); /* Tối ưu GPU: Dùng translateY thay cho top: -1px */
-}
-
-.btn-theme:active {
-  transform: translateY(0);
-}
-
-/* Màn hình lớn (Desktop >= 768px): Ẩn nút ☰, hiện dàn ngang các menu */
-@media (min-width: 768px) {
-  .menu-btn {
-    display: none;
-  }
-  .nav-menu {
-    display: block;
-    width: auto;
-    margin-top: 0;
-  }
-  .nav-list {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--space-lg);
-  }
-}
-
-/* =============================================================================
-   5. PHẦN CHÀO MỪNG (HERO SECTION - Bài 1: Responsive Typography)
-   ============================================================================= */
+/* -----------------------------------------------------------------------------
+   3.3 PHẦN CHÀO MỪNG (HERO COMPONENT)
+   ----------------------------------------------------------------------------- */
 .hero-section {
   text-align: center;
   padding: 48px var(--space-md);
 }
 
-.hero-section h1 {
-  margin-bottom: var(--space-sm);
-}
-
 .hero-section .highlight {
-  color: var(--primary);
+  color: var(--brand-color);
 }
 
 .hero-section p {
-  font-size: var(--p-size);
-  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto;
 }
 
-/* =============================================================================
-   6. GIỚI THIỆU BẢN THÂN (ABOUT ME - Bài 2: Adaptive Card Flexbox)
-   ============================================================================= */
+/* -----------------------------------------------------------------------------
+   3.4 THẺ THÔNG TIN BẢN THÂN (ADAPTIVE CARD)
+   ----------------------------------------------------------------------------- */
 .adaptive-card {
   display: flex;
-  flex-direction: column; /* Mobile: Ảnh ở trên, chữ ở dưới */
+  flex-direction: column;
   gap: var(--space-lg);
   background-color: var(--bg-card);
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   align-items: center;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color var(--duration-normal) ease, border-color var(--duration-normal) ease;
 }
 
 .card-image {
@@ -298,15 +415,13 @@ a:hover { color: var(--primary-hover); }
   height: 160px;
   object-fit: cover;
   border-radius: var(--radius-circle);
-  border: 4px solid var(--primary);
+  border: 4px solid var(--brand-color);
   box-shadow: var(--shadow-md);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform; /* Tối ưu GPU Acceleration */
+  transition: transform var(--duration-normal) var(--ease-elastic), box-shadow var(--duration-normal) ease;
 }
 
 .card-image:hover {
-  /* Tối ưu GPU Acceleration: Dùng scale thay vì thay đổi width/height/top */
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .card-content {
@@ -317,34 +432,12 @@ a:hover { color: var(--primary-hover); }
 }
 
 .card-content h3 {
-  color: var(--primary);
+  color: var(--brand-color);
 }
 
-/* Desktop (>= 768px): Ảnh bên trái, nội dung bên phải */
-@media (min-width: 768px) {
-  .adaptive-card {
-    flex-direction: row;
-    text-align: left;
-    align-items: center;
-    padding: var(--space-xl);
-  }
-  .card-content {
-    text-align: left;
-  }
-}
-
-/* =============================================================================
-   7. DANH SÁCH DỰ ÁN (PROJECT CARDS - Bài 5: Responsive Grid)
-   Tự động căn số cột: Mobile (1 cột), Tablet (2 cột), PC (2-3 cột)
-   ============================================================================= */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-lg);
-  margin-top: var(--space-md);
-}
-
-/* Thẻ Dự Án (Project Card) */
+/* -----------------------------------------------------------------------------
+   3.5 THẺ DỰ ÁN (PROJECT CARDS)
+   ----------------------------------------------------------------------------- */
 .project-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -354,28 +447,25 @@ a:hover { color: var(--primary-hover); }
   flex-direction: column;
   gap: var(--space-md);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  will-change: transform; /* Kích hoạt GPU Hardware Acceleration */
-  backface-visibility: hidden; /* Ngăn giật khung hình trên thiết bị di động */
+  transition: transform var(--duration-normal) var(--ease-smooth), 
+              box-shadow var(--duration-normal) ease, 
+              border-color var(--duration-normal) ease;
 }
 
-/* Hiệu ứng nổi bật khi rê chuột vào Card dự án */
 .project-card:hover {
-  /* Tối ưu GPU Acceleration: Dùng translateY(-4px) thay vì dùng top: -4px */
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: var(--primary);
+  border-color: var(--brand-color);
 }
 
-/* Thẻ nhãn phân loại (Badge) ví dụ: "Project 1", "HTML/CSS" */
 .project-badge {
   display: inline-block;
   align-self: flex-start;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--primary);
-  background-color: rgba(2, 132, 199, 0.1);
+  color: var(--badge-color);
+  background-color: var(--badge-bg);
   padding: 4px 10px;
   border-radius: var(--radius-sm);
 }
@@ -387,30 +477,27 @@ a:hover { color: var(--primary-hover); }
 
 .project-desc {
   color: var(--text-muted);
-  flex-grow: 1; /* Đẩy nút xem link xuống đều hàng với nhau */
+  flex-grow: 1;
 }
 
-/* Nút liên kết xem dự án trên GitHub */
 .project-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--brand-color);
   margin-top: auto;
-  transition: color 0.2s ease, transform 0.2s ease;
-  will-change: transform; /* Tối ưu GPU Acceleration */
+  transition: color var(--duration-fast) ease, transform var(--duration-fast) var(--ease-smooth);
 }
 
 .project-link:hover {
   text-decoration: underline;
-  /* Tối ưu GPU Acceleration: Dùng translateX(4px) thay vì dùng left: 4px hoặc margin-left: 4px */
   transform: translateX(4px);
 }
 
-/* =============================================================================
-   8. FORM LIÊN HỆ (Bài 6: Mobile-First Contact Form)
-   ============================================================================= */
+/* -----------------------------------------------------------------------------
+   3.6 BIỂU MẪU LIÊN HỆ (CONTACT FORM)
+   ----------------------------------------------------------------------------- */
 .contact-form {
   width: 100%;
   display: flex;
@@ -430,6 +517,7 @@ a:hover { color: var(--primary-hover); }
   color: var(--text-main);
 }
 
+/* Gộp quy tắc chung cho input và textarea */
 input, textarea {
   width: 100%;
   padding: 12px 14px;
@@ -437,60 +525,45 @@ input, textarea {
   border-radius: var(--radius-sm);
   background-color: var(--bg-card);
   color: var(--text-main);
-  font-size: 1rem;
+  font-size: var(--p-size);
   font-family: inherit;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
 }
 
 input:focus, textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+  border-color: var(--brand-color);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
-.btn-submit {
-  background-color: var(--primary);
-  color: #ffffff;
-  border: none;
-  padding: 12px 24px;
-  border-radius: var(--radius-sm);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  will-change: transform; /* Kích hoạt GPU Hardware Acceleration */
-  backface-visibility: hidden;
-  align-self: flex-start;
+/* -----------------------------------------------------------------------------
+   3.7 VÒNG XOAY TẢI (LOADING MASTER SPINNER)
+   👉 HOẠT ĐỘNG 2: @keyframes quay 360 độ vô hạn & border-top-color khác biệt
+   ----------------------------------------------------------------------------- */
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.btn-submit:hover {
-  background-color: var(--primary-hover);
-  /* Tối ưu GPU Acceleration: Dùng translateY(-2px) thay vì dùng top: -2px */
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: var(--space-md);
+  padding: 6px 2px;
 }
 
-.btn-submit:active {
-  /* Tối ưu GPU Acceleration: Dùng translateY(0) thay vì dùng top: 0 */
-  transform: translateY(0);
+.loading-spinner {
+  width: 38px;
+  height: 38px;
+  border: 4px solid var(--spinner-track);
+  border-top-color: var(--spinner-head);
+  border-radius: var(--radius-circle);
+  animation: spin 0.85s linear infinite;
 }
 
-/* Desktop (>= 768px): Căn giữa form liên hệ */
-@media (min-width: 768px) {
-  .contact-form {
-    max-width: 650px;
-    margin: 0 auto;
-  }
-}
-
-/* =============================================================================
-   9. CHÂN TRANG (FOOTER)
-   ============================================================================= */
-.site-footer {
-  text-align: center;
-  padding: var(--space-xl) var(--space-md);
+.loading-text {
+  font-size: 0.92rem;
   color: var(--text-muted);
-  font-size: 0.9rem;
-  border-top: 1px solid var(--border-color);
-  margin-top: var(--space-xl);
+  font-weight: 500;
 }

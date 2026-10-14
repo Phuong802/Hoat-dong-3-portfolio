@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Phạm Phương Phát</title>
+
+    <!-- Nhúng file định dạng giao diện CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- =======================================================================
+         👉 YÊU CẦU 3: THƯ VIỆN HIỆU ỨNG AOS (ANIMATE ON SCROLL) QUA CDN
+         Nhúng file CSS của thư viện AOS trong thẻ <head>
+         ======================================================================= -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+
+    <!-- =======================================================================
+         📌 [KHU VỰC 1] THANH ĐIỀU HƯỚNG & MENU (HEADER)
+         ======================================================================= -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="brand-logo">Portfolio of Pham</a>
+            
+            <!-- Nút bấm mở Menu trên điện thoại -->
+            <button class="menu-btn" id="menuBtn" aria-label="Mở menu">☰ Menu</button>
+            
+            <!-- Danh sách các liên kết trong Menu -->
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#gallery">Dự án</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                    <!-- Nút bấm chuyển đổi chế độ Sáng / Tối -->
+                    <li><button id="themeToggle" class="btn-theme" type="button">🌙 Dark Mode</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- NỘI DUNG CHÍNH CỦA TRANG WEB -->
+    <main class="site-main">
+
+        <!-- ===================================================================
+             📌 [KHU VỰC 2] BANNER CHÀO MỪNG (HERO SECTION)
+             👉 Tích hợp YÊU CẦU 3: data-aos="fade-down"
+             =================================================================== -->
+        <section class="hero-section" data-aos="fade-down" data-aos-duration="1000">
+            <h1>Chào mừng đến với <span class="highlight">Portfolio</span> của tui</h1>
+            <p>Thiết kế đáp ứng tiêu chí Mobile-First, giao diện hiện đại và tối ưu hóa hiệu năng phần cứng GPU.</p>
+        </section>
+
+        <!-- ===================================================================
+             📌 [KHU VỰC 3] THÔNG TIN BẢN THÂN (ABOUT ME)
+             👉 Tích hợp YÊU CẦU 3: data-aos="fade-up"
+             =================================================================== -->
+        <section id="about" class="section-container" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Giới thiệu bản thân</h2>
+            <div class="adaptive-card">
+                <img src="images/cat.webp" 
+                     alt="Ảnh đại diện Phạm Phương Phát" 
+                     class="card-image">
+
+                <div class="card-content">
+                    <h3>Frontend Developer</h3>
+                    <p>
+                        Mình là <strong>Phạm Phương Phát</strong>, hiện đang học ngành Công nghệ Thông tin. 
+                        Mình đam mê xây dựng các giao diện web trực quan, thân thiện với người dùng và có trải nghiệm mượt mà 60fps trên mọi thiết bị di động.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             📌 [KHU VỰC 4] DANH SÁCH DỰ ÁN NỔI BẬT (PROJECTS)
+             👉 Tích hợp YÊU CẦU 3: data-aos="fade-up"
+             =================================================================== -->
+        <section id="gallery" class="section-container" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Dự án nổi bật</h2>
+            
+            <div class="project-grid">
+                <!-- Dự án số 1 -->
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="project-badge">Dự án 01</span>
+                    <h3 class="project-title">Web học Tiếng Anh bằng Flashcard</h3>
+                    <p class="project-desc">Trang web hỗ trợ học từ vựng tiếng Anh tương tác qua các thẻ ghi nhớ trực quan.</p>
+                    <a href="https://github.com/tentaxxx8-max/PhamQuizFuck" target="_blank" rel="noopener noreferrer" class="project-link">
+                        Xem mã nguồn trên GitHub &rarr;
+                    </a>
+                </article>
+
+                <!-- Dự án số 2 -->
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="project-badge">Dự án 02</span>
+                    <h3 class="project-title">Web chúc mừng sinh nhật</h3>
+                    <p class="project-desc">Trang web quà tặng sinh nhật với hiệu ứng hoạt hình và bất ngờ dành cho người nhận.</p>
+                    <a href="https://github.com/tentaxxx8-max/birthday-gift-site" target="_blank" rel="noopener noreferrer" class="project-link">
+                        Xem mã nguồn trên GitHub &rarr;
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             📌 [KHU VỰC 5] BIỂU MẪU LIÊN HỆ (CONTACT FORM)
+             👉 Tích hợp YÊU CẦU 3: data-aos="fade-up"
+             👉 Tích hợp YÊU CẦU 1: Nút "Gửi tin nhắn" (Micro-interactions)
+             👉 Tích hợp YÊU CẦU 2: Vòng tròn Loading (Loading Master)
+             =================================================================== -->
+        <section id="contact" class="section-container" data-aos="fade-up" data-aos-duration="1000">
+            <h2>Liên hệ với tôi</h2>
+            <form class="contact-form" id="contactForm" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Họ tên</label>
+                    <input type="text" id="name" name="name" placeholder="Nhập họ tên..." required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Nhập email..." required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Nội dung</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Nhập nội dung..." required></textarea>
+                </div>
+
+                <!-- 👉 YÊU CẦU 1: NÚT "GỬI TIN NHẮN" (MICRO-INTERACTIONS) -->
+                <button type="submit" class="btn-submit" id="submitBtn">Gửi tin nhắn</button>
+
+                <!-- 👉 YÊU CẦU 2: VÒNG TRÒN LOADING (LOADING MASTER) -->
+                <div class="loading-wrapper" id="loadingWrapper" aria-live="polite">
+                    <div class="loading-spinner" role="status" aria-label="Đang tải dữ liệu"></div>
+                    <span class="loading-text">Hệ thống đang sẵn sàng xử lý dữ liệu...</span>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- =======================================================================
+         📌 [KHU VỰC 6] CHÂN TRANG (FOOTER)
+         ======================================================================= -->
+    <footer class="site-footer">
+        <p>© 2026 Phạm Phương Phát. All rights reserved.</p>
+    </footer>
+
+    <!-- Script điều khiển Mobile Menu và Dark/Light Mode -->
+    <script>
+        // Mở/đóng Menu trên Mobile
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Toggle Dark/Light Mode
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                themeToggle.innerText = '☀️ Light Mode';
+            } else {
+                themeToggle.innerText = '🌙 Dark Mode';
+            }
+        });
+
+        // Demo tương tác khi bấm gửi tin nhắn
+        const contactForm = document.getElementById('contactForm');
+        const loadingText = document.querySelector('.loading-text');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            loadingText.innerText = 'Đang gửi tin nhắn của bạn đi...';
+            setTimeout(() => {
+                loadingText.innerText = 'Đã gửi thành công! Cảm ơn bạn.';
+                contactForm.reset();
+                setTimeout(() => {
+                    loadingText.innerText = 'Hệ thống đang sẵn sàng xử lý dữ liệu...';
+                }, 4000);
+            }, 1200);
+        });
+    </script>
+
+    <!-- =======================================================================
+         👉 YÊU CẦU 3: THƯ VIỆN HIỆU ỨNG AOS (ANIMATE ON SCROLL) QUA CDN
+         Nhúng file JS và khởi tạo AOS ngay trước thẻ đóng </body>
+         ======================================================================= -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Khởi tạo thư viện AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800, // Thời gian chạy hoạt ảnh (800ms)
+            easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)', // Chuyển động gia tốc tự nhiên
+            once: false,   // false: chạy lại hiệu ứng mỗi khi cuộn qua lại
+            offset: 120    // Kích hoạt khi cuộn cách phần tử 120px
+        });
+    </script>
+</body>
+</html>
