@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vòng lặp và Hàm</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Vòng lặp và Hàm</h1>
+    <p class="sub">Học phần 111101 · Thiết kế Web</p>
+
+    <section>
+      <h2>Hoạt động 1: The Counting Machine</h2>
+      <p>Bấm nút rồi mở Console (F12) để xem kết quả.</p>
+      <button id="btn-all">In số 1 → 100</button>
+      <button id="btn-even">Chỉ in số chẵn</button>
+      <p id="loop-result" class="result"></p>
+    </section>
+
+    <section>
+      <h2>Hoạt động 2: Function Factory</h2>
+      <div class="calc">
+        <input type="number" id="dai" placeholder="Chiều dài" step="any">
+        <input type="number" id="rong" placeholder="Chiều rộng" step="any">
+        <button id="btn-area">Tính diện tích</button>
+      </div>
+      <p id="area-result" class="result"></p>
+      <button id="btn-area-demo">Gọi hàm 3 lần (xem Console)</button>
+      <br><br>
+      <div class="calc">
+        <input type="text" id="ten" placeholder="Tên">
+        <input type="number" id="namsinh" placeholder="Năm sinh">
+        <button id="btn-greet">Chào</button>
+      </div>
+      <p id="greet-result" class="result"></p>
+    </section>
+
+    <section>
+      <h2>Hoạt động 3: Refactoring Challenge</h2>
+      <div class="calc">
+        <input type="number" id="luong" placeholder="Mức lương (triệu đồng)" step="any">
+        <button id="btn-tax">Tính thuế</button>
+      </div>
+      <p id="tax-result" class="result"></p>
+    </section>
+  </main>
+
+  <script src="bai2.js"></script>
+</body>
+</html>
