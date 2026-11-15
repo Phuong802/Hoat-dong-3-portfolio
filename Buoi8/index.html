@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thực hành JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Thực hành JavaScript</h1>
+    <p class="sub">Học phần 111101 · Thiết kế Web</p>
+
+    <section>
+      <h2>Hoạt động 1: Hello JS Console</h2>
+      <p>Bấm nút rồi mở Console (F12) để xem kết quả.</p>
+      <button id="btn-hello">Chạy demo Hello Console</button>
+    </section>
+
+    <section>
+      <h2>Hoạt động 2: Logic Builder - Máy tính mini</h2>
+      <div class="calc">
+        <input type="number" id="num1" placeholder="Số thứ nhất" step="any">
+        <select id="op">
+          <option value="+">+</option>
+          <option value="-">−</option>
+          <option value="*">×</option>
+          <option value="/">÷</option>
+        </select>
+        <input type="number" id="num2" placeholder="Số thứ hai" step="any">
+        <button id="btn-calc">=</button>
+      </div>
+      <p id="calc-result" class="result"></p>
+    </section>
+
+    <section>
+      <h2>Kiểm tra điểm (prompt + if-else)</h2>
+      <button id="btn-pass">Đạt / Chưa đạt</button>
+      <button id="btn-rank">Xếp loại</button>
+      <p id="grade-result" class="result"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
