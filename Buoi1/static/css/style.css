@@ -1,0 +1,51 @@
+﻿/* static/css/style.css - Custom styles cho Dashboard hoc tap */
+
+/* ── Tổng thể ── */
+body {
+  background-color: #f0f4f8;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ── Navbar ── */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+/* ── Thẻ thống kê ── */
+.stat-card {
+  border: none;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+.stat-icon {
+  font-size: 2.4rem;
+  opacity: 0.85;
+}
+
+/* ── Bảng ── */
+.table th {
+  background-color: #e9ecef;
+  font-weight: 600;
+}
+
+/* ── Badge trạng thái ── */
+.badge-done   { background-color: #28a745; color: #fff; }
+.badge-todo   { background-color: #ffc107; color: #333; }
+
+/* ── Card section ── */
+.section-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* ── Footer ── */
+footer {
+  font-size: 0.85rem;
+  color: #6c757d;
+}

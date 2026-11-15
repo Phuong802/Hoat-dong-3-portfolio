@@ -1,0 +1,61 @@
+﻿{% extends "base.html" %}
+{% block title %}Quan ly Mon hoc{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2><i class="bi bi-journals me-2 text-primary"></i>Quan ly Mon hoc</h2>
+  <a href="{{ url_for('mon_hoc_them') }}" class="btn btn-primary">
+    <i class="bi bi-plus-lg me-1"></i>Them mon hoc
+  </a>
+</div>
+
+<div class="card section-card p-4">
+  {% if mon_hocs %}
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ten mon hoc</th>
+          <th>Giang vien</th>
+          <th>So bai tap</th>
+          <th class="text-center">Hanh dong</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for m in mon_hocs %}
+        <tr>
+          <td class="text-muted small">{{ loop.index }}</td>
+          <td class="fw-semibold">
+            <i class="bi bi-book text-primary me-1"></i>{{ m.ten_mon }}
+          </td>
+          <td>{{ m.giang_vien }}</td>
+          <td>
+            <span class="badge bg-info text-dark">{{ m.so_bai }} bai</span>
+          </td>
+          <td class="text-center">
+            <a href="{{ url_for('mon_hoc_sua', id=m.id) }}"
+               class="btn btn-sm btn-outline-warning me-1">
+              <i class="bi bi-pencil"></i>
+            </a>
+            <form action="{{ url_for('mon_hoc_xoa', id=m.id) }}" method="post"
+                  class="d-inline"
+                  onsubmit="return confirm('Xoa mon hoc se xoa ca bai tap lien quan. Tiep tuc?')">
+              <button class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-trash"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="text-muted text-center py-4">
+    Chua co mon hoc nao.
+    <a href="{{ url_for('mon_hoc_them') }}">Them mon hoc dau tien</a>
+  </p>
+  {% endif %}
+</div>
+{% endblock %}

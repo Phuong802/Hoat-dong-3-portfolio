@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thao tác DOM</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    section { color: #1f2937; }
+    body { transition: background 0.3s; }
+    body.dark { background: #111827; }
+    body.dark h1 { color: #f9fafb; }
+    body.dark .sub { color: #9ca3af; }
+
+    #menu { list-style: none; padding: 0; display: flex; gap: 16px; flex-wrap: wrap; }
+    #menu a { text-decoration: none; color: #2563eb; font-weight: 600; }
+
+    .lamp { display: block; width: 90px; height: 120px; margin: 12px 0; }
+    #live-output { margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Thao tác DOM</h1>
+    <p class="sub">Học phần 111101 · Thiết kế Web</p>
+
+    <section>
+      <h2>Hoạt động 1: The Element Picker</h2>
+      <ul id="menu">
+        <li><a class="menu-item" href="#">Trang chủ</a></li>
+        <li><a class="menu-item" href="#">Giới thiệu</a></li>
+        <li><a class="menu-item" href="#">Liên hệ</a></li>
+      </ul>
+      <button id="btn-pick">In thẻ ra Console</button>
+      <button id="btn-red">Đổi chữ menu sang đỏ</button>
+      <p>Mở Console (F12) để xem kết quả.</p>
+    </section>
+
+    <section>
+      <h2>Hoạt động 2: Light Switch</h2>
+      <img id="lamp" class="lamp" src="den-tat.svg" alt="Đèn tắt">
+      <button id="lamp-btn">Bật / Tắt đèn</button>
+      <hr>
+      <p>Dark mode đơn giản:</p>
+      <button id="toggle-btn">Đổi màu nền trang</button>
+    </section>
+
+    <section>
+      <h2>Hoạt động 3: Live Input</h2>
+      <input type="text" id="live-input" placeholder="Gõ gì đó vào đây...">
+      <span id="live-span"></span>
+      <h2 id="live-output"></h2>
+    </section>
+  </main>
+
+  <script src="bai3.js"></script>
+</body>
+</html>

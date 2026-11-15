@@ -1,0 +1,150 @@
+﻿{% extends "base.html" %}
+{% block title %}Dashboard - Tong quan hoc tap{% endblock %}
+
+{% block content %}
+<h2 class="mb-4"><i class="bi bi-speedometer2 me-2 text-primary"></i>Tong quan hoc tap</h2>
+
+<!-- ── Thẻ thống kê ── -->
+<div class="row g-4 mb-5">
+  <!-- Tổng môn học -->
+  <div class="col-6 col-md-3">
+    <div class="card stat-card bg-primary text-white p-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="fs-1 fw-bold">{{ tong_mon }}</div>
+          <div class="small opacity-75">Tong mon hoc</div>
+        </div>
+        <div class="stat-icon"><i class="bi bi-journals"></i></div>
+      </div>
+    </div>
+  </div>
+  <!-- Tổng bài tập -->
+  <div class="col-6 col-md-3">
+    <div class="card stat-card bg-info text-white p-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="fs-1 fw-bold">{{ tong_bai }}</div>
+          <div class="small opacity-75">Tong bai tap</div>
+        </div>
+        <div class="stat-icon"><i class="bi bi-list-task"></i></div>
+      </div>
+    </div>
+  </div>
+  <!-- Đã xong -->
+  <div class="col-6 col-md-3">
+    <div class="card stat-card bg-success text-white p-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="fs-1 fw-bold">{{ da_xong }}</div>
+          <div class="small opacity-75">Da hoan thanh</div>
+        </div>
+        <div class="stat-icon"><i class="bi bi-check-circle"></i></div>
+      </div>
+    </div>
+  </div>
+  <!-- Chưa làm -->
+  <div class="col-6 col-md-3">
+    <div class="card stat-card bg-warning text-dark p-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="fs-1 fw-bold">{{ chua_lam }}</div>
+          <div class="small opacity-75">Chua hoan thanh</div>
+        </div>
+        <div class="stat-icon"><i class="bi bi-hourglass-split"></i></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Thanh tiến độ ── -->
+{% if tong_bai > 0 %}
+<div class="card section-card p-4 mb-5">
+  <h5 class="mb-3"><i class="bi bi-bar-chart-fill me-2 text-primary"></i>Tien do hoan thanh</h5>
+  {% set pct = (da_xong / tong_bai * 100) | round(1) %}
+  <div class="d-flex justify-content-between small text-muted mb-1">
+    <span>{{ da_xong }}/{{ tong_bai }} bai tap</span>
+    <span>{{ pct }}%</span>
+  </div>
+  <div class="progress" style="height: 18px; border-radius: 10px;">
+    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+         style="width: {{ pct }}%"></div>
+  </div>
+</div>
+{% endif %}
+
+<!-- ── Danh sách môn học ── -->
+<div class="card section-card p-4 mb-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="mb-0"><i class="bi bi-journals me-2 text-primary"></i>Mon hoc</h5>
+    <a href="{{ url_for('mon_hoc_list') }}" class="btn btn-sm btn-outline-primary">
+      Xem tat ca
+    </a>
+  </div>
+  {% if mon_hocs %}
+  <div class="row g-3">
+    {% for m in mon_hocs %}
+    <div class="col-md-6 col-lg-3">
+      <div class="card border-0 bg-light p-3 h-100">
+        <div class="fw-semibold text-primary">
+          <i class="bi bi-book me-1"></i>{{ m.ten_mon }}
+        </div>
+        <div class="text-muted small mt-1">
+          <i class="bi bi-person me-1"></i>{{ m.giang_vien }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="text-muted">Chua co mon hoc nao. <a href="{{ url_for('mon_hoc_them') }}">Them ngay</a></p>
+  {% endif %}
+</div>
+
+<!-- ── Danh sách bài tập ── -->
+<div class="card section-card p-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="mb-0"><i class="bi bi-list-task me-2 text-primary"></i>Bai tap gan day</h5>
+    <a href="{{ url_for('bai_tap_list') }}" class="btn btn-sm btn-outline-primary">
+      Xem tat ca
+    </a>
+  </div>
+  {% if bai_taps %}
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ten bai tap</th>
+          <th>Mon hoc</th>
+          <th>Han nop</th>
+          <th>Trang thai</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for b in bai_taps %}
+        <tr>
+          <td class="text-muted small">{{ loop.index }}</td>
+          <td class="fw-semibold">{{ b.ten_bai }}</td>
+          <td><span class="badge bg-secondary">{{ b.ten_mon }}</span></td>
+          <td>{{ b.han_nop }}</td>
+          <td>
+            {% if b.trang_thai == 'Da xong' %}
+              <span class="badge badge-done px-2 py-1">
+                <i class="bi bi-check-lg me-1"></i>Da xong
+              </span>
+            {% else %}
+              <span class="badge badge-todo px-2 py-1">
+                <i class="bi bi-clock me-1"></i>Chua lam
+              </span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="text-muted">Chua co bai tap nao. <a href="{{ url_for('bai_tap_them') }}">Them ngay</a></p>
+  {% endif %}
+</div>
+{% endblock %}
